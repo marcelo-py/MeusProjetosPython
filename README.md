@@ -1,0 +1,2 @@
+# MeusProjetosPython
+ Ideias de Python 
