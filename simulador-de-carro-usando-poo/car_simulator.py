@@ -1,13 +1,13 @@
 from playsound import playsound
 
 class Carro:
-    def __init__(self, *car):
-        self.abrir_porta = car
-        self.entrar_carro = car
-        self.ligar_carro = car
-        self.carro_andar = car
-        self.tocar_musica = car
-        self.fechar_carro = car
+    def __init__(self):
+        self.abrir_porta = None
+        self.entrar_carro = None
+        self.ligar_carro = None
+        self.carro_andar = None
+        self.tocar_musica = None
+        self.fechar_carro = None
     def abrir(self):
         if self.abrir_porta:
             print('As portas já estão abertas! ')
@@ -33,8 +33,8 @@ class Carro:
         self.entrar_carro = True
 
     def ligar(self):
-        if not self.abrir_porta:
-            print('A porta não está aberta para o carro ser ligado')
+        if not self.entrar_carro:
+            print('A porta não está aberta ou você não está dentro do carro para liga-lo')
             return
         if not self.entrar_carro:
             print('Você precisa está dentro do carro para liga-lo')
@@ -55,7 +55,7 @@ class Carro:
     def tocarmusica(self, t=''):
         if len(t) == 0:
             print('Você precisa selecionar uma musica!')
-        if not self.abrir_porta:
+        if not self.entrar_carro:
             print('O carro precisa está com a porta aberta para você entrar nele e por a música')
             return
 
@@ -103,6 +103,7 @@ while True:
             c.andar()
         elif op == 6:
             c.tocarmusica('DEAF KEV - Invincible[NCS].mp3')  # Coloque a música na pasta junto com o programa e coloque o nome dela entre aspas alterando a musica atual, ex: 'musica.mp3'
+            continue
         elif op > 5 or op != 000:
             print('\033[1;31mErro!\033[m Digite uma opção válida!')
         if op == 000:
