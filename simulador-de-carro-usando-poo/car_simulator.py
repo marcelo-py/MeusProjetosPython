@@ -8,6 +8,8 @@ class Carro:
         self.carro_andar = None
         self.tocar_musica = None
         self.fechar_carro = None
+
+
     def abrir(self):
         if self.abrir_porta:
             print('As portas já estão abertas! ')
@@ -15,6 +17,8 @@ class Carro:
         print('Portas abertas!')
         self.abrir_porta = True
         self.fechar_carro = False
+
+
     def fechar(self):
         if self.fechar_carro:
             print('O carrro já está com as portas fechadas!')
@@ -24,6 +28,7 @@ class Carro:
         self.fechar_carro = True
         self.abrir_porta = False
 
+
     def entrar(self):
         if not self.abrir_porta:
             print('Para entrar você precisa abrir a porta primeiro')
@@ -31,6 +36,7 @@ class Carro:
 
         print('Você entrou no carro e está dentro dele!')
         self.entrar_carro = True
+
 
     def ligar(self):
         if not self.entrar_carro:
@@ -49,6 +55,7 @@ class Carro:
         if not self.ligar_carro:
             print('O carro precisa está ligado para andar')
             return
+
 
         print('O carro está andando')
         self.carro_andar = True
@@ -73,7 +80,9 @@ class Carro:
             print('Erro ao tocar música')
         finally:
             print('A música parou de tocar!')
+    
 
+#Programa principal
 c = Carro()
 while True:
     print('\033[1;35m='*38)
@@ -88,8 +97,10 @@ while True:
         6 - Tocar música
     (digite 000 para sair )\033[1;34m=>>\033[m'''))
         print('\033[1;35m~\033[m'*38)
+
     except ValueError:
         print('\033[1;33mErro!\033[m Por favor digite um número correto!')
+        
     else:
         if op == 1:
             c.abrir()
