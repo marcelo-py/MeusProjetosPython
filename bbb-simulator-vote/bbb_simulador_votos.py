@@ -15,7 +15,7 @@ paredao = []
 maisvotado = []
 for c in range(0, len(na_reta)):
     vota = int(input('Em quem {} deve votar?(digite o codigo do participante): '.format(na_reta[c])))
-    while vota > len(participantes[-1]):
+    while vota > len(participantes):
         print('digite uma opção valida !!!')
         vota = int(input('Em quem {} deve votar?(digite o codigo do participante): '.format(na_reta[c])))
     while participantes[vota] == liderescolhe_a or participantes[vota] == participantes[3]:
