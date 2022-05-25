@@ -2,5 +2,20 @@
 
 {%block 'titulo'%}Marcelo-Inicio{%endblock%}
 {%block 'conteudo'%}
+    <h1>Gerador de CPFs</h1>
+    <form action="{%url 'index'%}" method="POST">
+        {%csrf_token%}
+        <label for="criar_arq">salvar em um arquivo de texto</label>
+        <input type="checkbox" name="criar_arq" id="criar_arq">
 
+        <label for="quant_cpf">Quantidades de cpfs</label>
+        <input type="number" id="quant_cpf" name="quant_cpfs">
+
+        <button type="submit">Gerar CPFs</button>
+    </form>
+    <div class="container" style="max-height: 500px; overflow-y: auto; width: 250px;">
+        {%for gerado in gerados%}
+            <p class="cpf_gerado">{{gerado}}</p>
+        {%endfor%}
+    </div>
 {%endblock%}

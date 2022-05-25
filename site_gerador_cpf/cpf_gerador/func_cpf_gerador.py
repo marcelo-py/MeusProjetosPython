@@ -3,7 +3,7 @@ import random
 
 def gerar_cpf(quant=1, ncpf='', add_arq=False):
     arq = open('./cpfsgerados.txt', 'wt+')
-    for _ in range(quant):
+    for _ in range(int(quant)):
         cpf = ''
         digito1 = 0
         digito2 = 0
@@ -67,5 +67,3 @@ def gerar_cpf(quant=1, ncpf='', add_arq=False):
         yield full_cpf
     arq.close()
 
-for c in gerar_cpf(quant=100, add_arq=True):
-    print(c)
