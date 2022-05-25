@@ -1,1 +1,3 @@
 # Site Gerador de CPFs/Online
+
+não me responsabiliso de gerar muitos CPFs e travar sua maquina...
