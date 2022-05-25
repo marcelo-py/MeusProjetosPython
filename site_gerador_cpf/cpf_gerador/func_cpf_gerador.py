@@ -1,7 +1,5 @@
 #para praticar mais não irei nem olhar no codigo que eu fiz para gerar nesse repositorio
-from ast import Yield
 import random
-import sys
 
 def gerar_cpf(quant=1, ncpf='', add_arq=False):
     arq = open('./cpfsgerados.txt', 'wt+')
