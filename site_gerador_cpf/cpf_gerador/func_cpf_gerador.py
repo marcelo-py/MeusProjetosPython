@@ -1,8 +1,10 @@
 #para praticar mais não irei nem olhar no codigo que eu fiz para gerar nesse repositorio
+from ast import Yield
 import random
+import sys
 
-
-def gerar_cpf(quant=1, ncpf=''):
+def gerar_cpf(quant=1, ncpf='', add_arq=False):
+    arq = open('./cpfsgerados.txt', 'wt+')
     for _ in range(quant):
         cpf = ''
         digito1 = 0
@@ -48,9 +50,9 @@ def gerar_cpf(quant=1, ncpf=''):
         
         if len(ncpf) > 1:
             if digito1 == int(ncpf[-2]) and digito2 == int(ncpf[-1]):
-                print('O CPF é Valido!')
+                return 'O CPF é Valido!'
             else:
-                print('O CPF não é Valido!')
+                return 'O CPF não é Valido!'
 
         cont = 0
         #deixando em formado de CPF
@@ -61,6 +63,11 @@ def gerar_cpf(quant=1, ncpf=''):
             full_cpf += c
             cont += 1
         full_cpf = full_cpf+'-'+str(digito1)+str(digito2)
-        print(full_cpf)
+        if add_arq:
+            arq.write(f'{full_cpf}\n')
+        
+        yield full_cpf
+    arq.close()
 
-gerar_cpf()
+for c in gerar_cpf(quant=100, add_arq=True):
+    print(c)
