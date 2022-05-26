@@ -9,8 +9,5 @@ def index(request):
         return render(request, 'index.html', {
             'gerados': gerados
         })
-    gerados = gerar_cpf(quant=1)
-    return render(request, 'index.html', {
-        'gerados': gerados
-    })
+    return render(request, 'index.html',)
 
