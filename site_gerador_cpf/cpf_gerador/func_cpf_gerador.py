@@ -1,4 +1,4 @@
-#para praticar mais não irei nem olhar no codigo que eu fiz para gerar nesse repositorio
+#para praticar mais não irei nem olhar no codigo nesse repositório que eu fiz para gerar
 import random
 
 def gerar_cpf(quant=1, ncpf='', add_arq=False):
