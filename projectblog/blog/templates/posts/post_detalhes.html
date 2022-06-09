@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block 'titulo' %} {% endblock %}
+
+{% block 'conteudo' %}
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8 text-center">
+                <h2>{{post.titulo_post}}</h2>
+                <h5>{{post.excerto_post}}</h5>
+                <p class="text-muted mt-4">
+                    <small>
+                        {{post.autor_post}} | {{post.data_post}} | {{post.categoria_post}}
+                    </small>
+                </p>
+            </div>
+            <div class="col-xl"></div>
+        </div>
+
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8">
+                
+                {%if post.imagem_post%}
+                <img class="img-fluid pb-5 " src="{{post.imagem_post.url}}" alt="{{post.titulo_post}}">
+                {%endif%}
+
+                {{post.conteudo_post|safe}}
+            </div>
+            <div class="col-xl"></div>
+        </div>
+        {%if comentarios%}
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8">
+                <h2 class="my-3">Comentários ({{comentarios.count}})</h2>
+                {% for comentario in comentarios %}
+                <h5 class="mb-2 mt-5">{{comentario.nome_comentario}}</h5>
+                <small class="text-muted">{{comentario.data_comentario}}</small>
+                <p class="mb-1">{{comentario.comentario}}</p>
+                {% endfor %}
+
+            </div>
+            <div class="col-xl"></div>
+        </div>
+        {%endif%}
+
+        <div class="row pt-5">
+            <div class="col-xl"></div>
+            <div class="col-xl-8">
+                <h2 class="my-3">Deixe um comentário</h2>
+
+                <form method="POST" action="#envia_comentario">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{form}}
+                        <tr>
+                            <td colspan="2">    
+                                <div class="g-recaptcha" data-sitekey="6LesJW0fAAAAABndslYCxDQ9zLrDH9sg7ThnQCnU"></div>
+                                {%include 'parciais/_messages.html'%}
+                                <input id="envia_comentario" type="submit" class="btn btn-primary"
+                                    value="Enviar">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-xl"></div>
+        </div>
+    </div>
+{% endblock %}
